@@ -11,7 +11,7 @@ class DataController
     }
     public function insertData($tableName, $dataToInsert)
     {
-        if (isset($tableName) || !is_array($dataToInsert) || count($dataToInsert) < 1) {
+        if (empty($tableName) || !is_array($dataToInsert) || count($dataToInsert) < 1) {
             return throw new Exception('Something wrong with table name & data to insert');
         }
         $columns = implode(', ', array_keys($dataToInsert));
