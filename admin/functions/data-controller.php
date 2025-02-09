@@ -29,4 +29,16 @@ class DataController
             return false;
         }
     }
+
+    public function deleteData($table, $where, $id)
+    {
+        $sql = "DELETE FROM $table WHERE $where";
+        $stmt = $this->connect->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
