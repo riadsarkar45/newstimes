@@ -3,6 +3,7 @@
 class DataController
 {
     private $connect;
+
     public function __construct()
     {
         require_once('includes/db.php');
@@ -32,11 +33,37 @@ class DataController
 
     public function deleteData($table, $where, $id)
     {
+        if (empty($table) || empty($where) || empty($id)) {
+            return throw new Exception('something is wrong variable $table, $where, $id');
+        }
+
         $sql = "DELETE FROM $table WHERE $where";
         $stmt = $this->connect->prepare($sql);
         $stmt->bindParam(':id', $id);
         if ($stmt->execute()) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function fetchData($table, $where, $orderBy)
+    {
+        $sql = "SELECT * FROM $table";
+
+        // Append WHERE only if provided
+        if (!empty($where)) {
+            $sql .= " WHERE $where";
+        }
+
+        // Append ORDER BY only if provided
+        if (!empty($orderBy)) {
+            $sql .= " ORDER BY $orderBy";
+        }
+        $stmt = $this->connect->prepare($sql);
+
+        if ($stmt->execute()) { // No need to pass $where in execute
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
             return false;
         }
