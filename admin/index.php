@@ -33,12 +33,14 @@ session_start();
             <?php
             $userId = $_SESSION["id"];
             $posts = new DataController();
-            $count = $posts->fetchData('posts', "", '');
-            echo count($count);
+            $allPosts = $posts->fetchData('posts', "", '');
+            $approvedPost = $posts->fetchData('posts', 'isApproved = "yes"', '' );
+            $pendingPost = $posts->fetchData('posts', 'isApproved = "no"', '' );
+            $declinedPost = $posts->fetchData('posts', 'isApproved = "declined"', '' );
 
             ?>
             <div class="info-box"> <span class="info-box-icon bg-aqua"><i class="icon-briefcase"></i></span>
-              <div class="info-box-content"> <span class="info-box-number">1234</span> <span class="info-box-text">Total Posts</span> </div>
+              <div class="info-box-content"> <span class="info-box-number"><?php echo count($allPosts); ?></span> <span class="info-box-text">Total Posts</span> </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
@@ -46,7 +48,7 @@ session_start();
           <!-- /.col -->
           <div class="col-lg-3 col-xs-6">
             <div class="info-box"> <span class="info-box-icon bg-green"><i class="icon-pencil"></i></span>
-              <div class="info-box-content"> <span class="info-box-number">456</span> <span class="info-box-text">Approved Post</span></div>
+              <div class="info-box-content"> <span class="info-box-number"></span><?php echo count($approvedPost) ?><span class="info-box-text">Approved Post</span></div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
@@ -54,7 +56,7 @@ session_start();
           <!-- /.col -->
           <div class="col-lg-3 col-xs-6">
             <div class="info-box"> <span class="info-box-icon bg-yellow"><i class="icon-wallet"></i></span>
-              <div class="info-box-content"> <span class="info-box-number">$41234</span> <span class="info-box-text">Pending Post</span></div>
+              <div class="info-box-content"> <span class="info-box-number"><?php echo count($pendingPost) ?></span> <span class="info-box-text">Pending Post</span></div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
@@ -62,7 +64,7 @@ session_start();
           <!-- /.col -->
           <div class="col-lg-3 col-xs-6">
             <div class="info-box"> <span class="info-box-icon bg-red"><i class="icon-layers"></i></span>
-              <div class="info-box-content"> <span class="info-box-number">$81234</span> <span class="info-box-text">Declined Post</span></div>
+              <div class="info-box-content"> <span class="info-box-number"><?php echo count($declinedPost) ?></span> <span class="info-box-text">Declined Post</span></div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->

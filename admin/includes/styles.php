@@ -23,7 +23,21 @@
   <link rel="stylesheet" href="dist/css/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="dist/css/et-line-font/et-line-font.css">
   <link rel="stylesheet" href="dist/css/themify-icons/themify-icons.css">
+<!-- v4.0.0-alpha.6 -->
+<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.min.css">
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/style.css">
+<link rel="stylesheet" href="dist/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="dist/css/et-line-font/et-line-font.css">
+<link rel="stylesheet" href="dist/css/themify-icons/themify-icons.css">
+
+<!-- jsgrid Tables -->
+<link type="text/css" rel="stylesheet" href="dist/plugins/jsgrid/jsgrid.css" />
+<link type="text/css" rel="stylesheet" href="dist/plugins/jsgrid/theme.css" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
